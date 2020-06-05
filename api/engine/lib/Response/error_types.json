@@ -1,0 +1,22 @@
+[
+  {
+    "id": 100,
+    "code": "UNDEFINED_API_ERROR",
+    "description": "IDK what this error is"
+  },
+  {
+    "id": 101,
+    "code": "API_CALL_ERROR",
+    "description": "Error occurred while attempted to call API Method"
+  },
+  {
+    "id": 102,
+    "code": "API_PARAMS_VERIFY_ERROR",
+    "description": "Error occurred while trying to verify the params sign"
+  },
+  {
+    "id": 103,
+    "code": "",
+    "description": ""
+  }
+]

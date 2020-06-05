@@ -1,0 +1,12 @@
+{
+    "name": "silve/vktaxiengine",
+    "description": "VKTaxi Engine",
+    "type": "project",
+    "require": {
+        "php": "^7.3",
+        "ext-mysqli": "*",
+        "ext-json": "*"
+    },
+    "license": "MIT",
+    "minimum-stability": "dev"
+}
