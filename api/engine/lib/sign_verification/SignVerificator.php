@@ -9,7 +9,8 @@ function SignVerification(array $params){
     foreach ($VerificationPrints as $print => $method){
         if (isset($params[$print])){
             $Verifier = new $VerificationPrints[$print]($params);
-            return $Verifier->GetDesicion();
+
+            return $Verifier->GetDecision();
 
         }
     }

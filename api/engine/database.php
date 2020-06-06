@@ -9,7 +9,7 @@ $db = Mysql::create(DATABASE_SERVER,DATABASE_LOGIN,DATABASE_PASSWORD)
     ->setCharset('utf8');
 
 
-//Checking and generating database if not exist
+//Checking and creating database if not exist
 $database_check = $db->query("SHOW DATABASES LIKE '?s'",DATABASE_DBNAME);
 if (!$database_check->fetch_assoc()){
     $db->query("CREATE DATABASE ?s",DATABASE_DBNAME);
@@ -18,6 +18,6 @@ $db->setDatabaseName(DATABASE_DBNAME);
 
 //
 if (GENERATE_DATABASE_SCHEMA){
-    include './database/database_schema_generator.php';
+    include './database/db_schema_generator.php';
 }
 
