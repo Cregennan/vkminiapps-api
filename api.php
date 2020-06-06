@@ -5,12 +5,11 @@
  * Entry point of RNAPI, VKTaxi edition
  *
  */
-error_reporting(E_ERROR | E_WARNING | E_PARSE);
+error_reporting(E_ERROR | E_WARNING | E_PARSE | E_ALL);
 include 'engine/lib.php';
 include 'engine/config.php';
 
 $DATA = $_GET;
-
 if (SIGN_VERIFICATION_REQUIRED){
     $IsVerified = SignVerification($DATA);
     if (!$IsVerified){
@@ -39,7 +38,6 @@ if(array_key_exists($DATA['method'],$MethodsList)){
     $method = new $MethodsList[$DATA['method']]($DATA);
 
     //Method Params Verification
-    if(PARAMS_VERIFICATION_REQUIRED){
         if($method::RequireVerification || $method::RequireVerification === null ){
             if (property_exists($method,'ParamsList')){
                 $params = $method::$ParamsList;
@@ -58,7 +56,7 @@ if(array_key_exists($DATA['method'],$MethodsList)){
                 new APIResponse(new TheError(104));
             }
         }
-    }
+
 
 
     //Исполнение метода

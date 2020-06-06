@@ -41,7 +41,7 @@ final class TheError implements IReturnable
                 $this->data +=["extra"=>$extra];
             }
         }else{
-            $this->data = $ErrorTypes[0];
+            $this->data = get_object_vars($ErrorTypes[0]);
         }
 
     }

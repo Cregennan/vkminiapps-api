@@ -1,3 +1,5 @@
-api/tests.php
+tests.php
 .idea
 composer.phar
+index.php
+.htaccess
