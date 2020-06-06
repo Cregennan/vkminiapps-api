@@ -1,22 +1,32 @@
 [
   {
     "id": 100,
-    "code": "UNDEFINED_API_ERROR",
-    "description": "IDK what this error is"
-  },
-  {
-    "id": 101,
-    "code": "API_CALL_ERROR",
-    "description": "Error occurred while attempted to call API Method"
+    "code": "undefined_error",
+    "description": "Undefined error occurred"
   },
   {
     "id": 102,
-    "code": "API_PARAMS_VERIFY_ERROR",
-    "description": "Error occurred while trying to verify the params sign"
+    "code": "method_call_error",
+    "description": "Error occurred while attempted to call API Method"
+  },
+  {
+  "id": 101,
+    "code": "access_denied",
+    "description": "Access denied."
   },
   {
     "id": 103,
-    "code": "",
-    "description": ""
+    "code": "wrong_method",
+    "description":"No such method or invalid method name"
+  },
+  {
+    "id": 104,
+    "code": "params_not_declared",
+    "description": "Request parameters required"
+  },
+  {
+    "id": 105,
+    "code": "wrong_method_parameter",
+    "description": "Wrong request parameter"
   }
 ]

@@ -5,23 +5,16 @@
  * Entry point of RNAPI, VKTaxi edition
  *
  */
-header('Content-type: text/html; charset=utf-8');
-error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 include 'engine/lib.php';
 include 'engine/config.php';
 
 $DATA = $_GET;
 
-new APIResponse(new TheError(101,'Неужели ты настолько долбоеб, что не смог сделать нормальный метод апи?'));
 if (SIGN_VERIFICATION_REQUIRED){
     $IsVerified = SignVerification($DATA);
     if (!$IsVerified){
-        /**
-         * TODO: Генерация ошибки проверки подписи (После создания соответствующей системы)
-         * TODO: Создать систему единой генерации ответа и ошибок
-         */
-
-
+       new APIResponse(new TheError(101));
     }
 }
 //Including API Methods
@@ -37,8 +30,7 @@ foreach ($classes as $class){
     $MethodsList += [$class::CallableName=> $class];
 }
 if (!$DATA['method']){
-    //TODO Ошибка запроса к АПИ: не указан вызываемый метод
-    echo("Method not given");
+    new APIResponse(new TheError(103));
 }
 
 //Method existence checking
@@ -59,31 +51,22 @@ if(array_key_exists($DATA['method'],$MethodsList)){
                     }
                 }
                 if (!$decision) {
-                    echo("Params verification failed");
-                    echo("Parameter \"".$failure["failed_param"]. "\" should be ".$failure["failed_type"]. ".");
-                    //TODO Ошибка верификации параметров запроса
+                    $wrong_parameter = "Parameter \"".$failure["failed_param"]. "\" should be ".$failure["failed_type"]. ".";
+                    new APIResponse(new TheError(105,$wrong_parameter));
                 }
             }else{
-                //TODO Ошибка АПИ: не обьявлены входные параметры
-                echo("Params not declared");
+                new APIResponse(new TheError(104));
             }
         }
     }
 
 
-
+    //Исполнение метода
     $result = $method->Execute();
-
-
-    /**
-     * TODO Вызов метода
-     */
+    new APIResponse($result);
 
 }else{
-    /**
-     * TODO Ошибка АПИ: вызываемый метод не существует
-     */
-    echo ('No such api method');
+   new APIResponse(new TheError(103));
 }
 
 ?>

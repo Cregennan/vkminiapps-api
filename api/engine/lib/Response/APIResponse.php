@@ -5,7 +5,6 @@ class APIResponse
 {
     public function __construct(IReturnable $Response)
     {
-        header('Content-type: text/html; charset=utf-8');
         $status = '';
         if($Response instanceof TheSuccess){
             $status = 'success';
@@ -17,6 +16,6 @@ class APIResponse
             "status" => $status,
             "response" => $Response->getData()
         );
-        exit(json_encode($result));
+        exit(json_encode($result,JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK));
     }
 }
