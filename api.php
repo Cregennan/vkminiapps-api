@@ -5,7 +5,7 @@
  * Entry point of RNAPI, VKTaxi edition
  *
  */
-error_reporting(E_ERROR | E_WARNING | E_PARSE | E_ALL);
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 include 'engine/lib.php';
 include 'engine/config.php';
 
